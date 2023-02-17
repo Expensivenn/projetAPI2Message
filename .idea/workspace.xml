@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e83134b-6287-4dfe-8c5c-40efae418642" name="Changes" comment="Classe métiers" />
+    <list default="true" id="8e83134b-6287-4dfe-8c5c-40efae418642" name="Changes" comment="Classe métiers">
+      <change afterPath="$PROJECT_DIR$/src/Bureau.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Employe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2LSAQRCcqYzIEqX24Dc20FNqmBm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -20,7 +41,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Ecole/2/API2/DemoProf/demoMagasin",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "ChangesTree.GroupingKeys": [
@@ -38,6 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675854095663</updated>
       <workItem from="1675854096947" duration="312000" />
+      <workItem from="1676642854248" duration="1782000" />
     </task>
     <task id="LOCAL-00001" summary="Classe métiers">
       <created>1675854358322</created>
