@@ -145,6 +145,8 @@ public class Employe {
     }
     /**
      * Egalité de deux employés basée sur l'id employé
+     * @param o l'autre objet
+     * @return égalité ou pas
      */
     @Override
     public boolean equals(Object o) {
@@ -155,10 +157,25 @@ public class Employe {
     }
     /**
      * calcul du hashcode basé sur l'id
+     * @return valeur du hashcode
      */
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+    /**
+     * méthode toString
+     *
+     * @return informations de l'employé
+     */
+    @Override
+    public String toString() {
+        return "Employe{" +
+                "id=" + id +
+                ", mail='" + mail + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                '}';
     }
 }
 

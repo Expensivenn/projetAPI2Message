@@ -116,6 +116,8 @@ public class Bureau {
     }
     /**
      * Egalité de deux bureaux basée sur l'id bureau
+     * @param o l'autre objet
+     * @return égalité ou pas
      */
     @Override
     public boolean equals(Object o) {
@@ -126,10 +128,24 @@ public class Bureau {
     }
     /**
      * calcul du hashcode basé sur l'id
+     * @return valeur du hashcode
      */
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+    /**
+     * méthode toString
+     *
+     * @return informations du bureau
+     */
+    @Override
+    public String toString() {
+        return "Bureau{" +
+                "id=" + id +
+                ", sigle='" + sigle + '\'' +
+                ", tel='" + tel + '\'' +
+                '}';
     }
 }
 

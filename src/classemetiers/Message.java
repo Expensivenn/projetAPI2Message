@@ -30,6 +30,14 @@ public class Message {
      * message précedent celui-ci
      */
     private Message message;
+    /**
+     * Employe qui envoie ce message
+     */
+    private Employe emmetteur;
+    /**
+     * Employe qui reçoi ce message
+     */
+    private Employe recepteur;
 
     /**
      * Crée un nouveau message avec l'identifiant, l'objet, le contenu et la date donnés.
@@ -122,9 +130,39 @@ public class Message {
     public void setMessage(Message message) {
         this.message = message;
     }
+    /**
+     * Getter pour l'emmeteur du message.
+     * @return l'emmeteur
+     */
+    public Employe getEmmetteur() {
+        return emmetteur;
+    }
+    /**
+     * Setter pour le emmeteur du message.
+     * @param  emmetteur le emmeteur du message.
+     */
+    public void setEmmetteur(Employe emmetteur) {
+        this.emmetteur = emmetteur;
+    }
+    /**
+     * Getter pour le recepteur du message.
+     * @return le recepteur
+     */
+    public Employe getRecepteur() {
+        return recepteur;
+    }
+    /**
+     * Setter pour le recepteur du message.
+     * @param  recepteur le recepteur du message.
+     */
+    public void setRecepteur(Employe recepteur) {
+        this.recepteur = recepteur;
+    }
 
     /**
      * Egalité de deux messages basée sur l'id Message
+     * @param o l'autre objet
+     * @return égalité ou pas
      */
     @Override
     public boolean equals(Object o) {
@@ -135,10 +173,28 @@ public class Message {
     }
     /**
      * calcul du hashcode basé sur l'id
+     * @return valeur du hashcode
      */
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+    /**
+     * méthode toString
+     *
+     * @return informations du message
+     */
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", objet='" + objet + '\'' +
+                ", contenu='" + contenu + '\'' +
+                ", date=" + date +
+                ", message=" + message +
+                ", emmeteur=" + emmetteur +
+                ", recepteur=" + recepteur+
+                '}';
     }
 }
 
