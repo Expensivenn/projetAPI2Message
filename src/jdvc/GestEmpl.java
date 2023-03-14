@@ -4,11 +4,13 @@ import classemetiers.Bureau;
 import classemetiers.Employe;
 import classemetiers.Message;
 import myconnections.DBConnection;
+import utilitaires.Utilitaires;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -94,12 +96,18 @@ public class GestEmpl {
         }
     }
     public void recherche() {
-
-        System.out.println("id de l'employé recherché ");
-        int idrech = sc.nextInt();
+        List<Integer> l = listeEmploye();
+        Integer idEmpTmp;
+        do {
+            System.out.println("Id de l'employé :");
+            idEmpTmp = sc.nextInt();
+            if (!l.contains(idEmpTmp)) {
+                System.out.println("Pas un id existant recommencez !");
+            }
+        } while (!l.contains(idEmpTmp));
         String query = "select * from APIEMPLOYE where id_employe = ?";
         try(PreparedStatement pstm = dbConnect.prepareStatement(query)) {
-            pstm.setInt(1,idrech);
+            pstm.setInt(1,idEmpTmp);
             ResultSet rs = pstm.executeQuery();
             if(rs.next()){
                 String nom = rs.getString(4);
@@ -124,13 +132,13 @@ public class GestEmpl {
             sc.skip("\n");
             switch (ch) {
                 case 1:
-                    //messEnv(employe);
+                    messRecDate(employe);
                     break;
                 case 2:
                     messRec(employe);
                     break;
                 case 3:
-                    //rep(employe);
+                    messDest(employe);
                     break;
 
                 case 4: return;
@@ -140,13 +148,43 @@ public class GestEmpl {
         } while (true);
 
     }
-    private void messRec(Employe employe) {
-        String query = "select * from APIMESSAGE where id_dest = ?";
-        rechercheMessage(employe,query);
-    }
-    private void rechercheMessage(Employe employe,String query){
+    private void messRecDate(Employe employe) {
+        System.out.println("Entrez première date :");
+        LocalDate d1 = Utilitaires.lecDate();
+        System.out.println("Entrez deuxième date :");
+        LocalDate d2 = Utilitaires.lecDate();
+        java.sql.Date d1Sql = java.sql.Date.valueOf(d1);
+        java.sql.Date d2Sql = java.sql.Date.valueOf(d2);
+        System.out.println(d1Sql);
+        String query = "select * from APIMESSAGE where id_dest = ? AND dateenvoi BETWEEN ? AND ?";
         try(PreparedStatement pstm = dbConnect.prepareStatement(query)) {
             pstm.setInt(1,employe.getId());
+            pstm.setDate(2,d1Sql);
+            pstm.setDate(3,d2Sql);
+            rechercheMessage(pstm);
+        } catch (SQLException e) {
+            System.out.println("erreur sql :"+e);
+        }
+    }
+    private void messRec(Employe employe) {
+        String query = "select * from APIMESSAGE where id_dest = ?";
+        try(PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+            pstm.setInt(1,employe.getId());
+            rechercheMessage(pstm);
+        } catch (SQLException e) {
+            System.out.println("erreur sql :"+e);
+        }
+    }
+    private void messDest(Employe employe) {
+        String query = "select * from APIMESSAGE where id_employe = ? AND id_message_1 IS NOT NULL ";
+        try(PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+            pstm.setInt(1,employe.getId());
+            rechercheMessage(pstm);
+        } catch (SQLException e) {
+            System.out.println("erreur sql :"+e);
+        }
+    }
+    private void rechercheMessage(PreparedStatement pstm) throws SQLException {
             ResultSet rs = pstm.executeQuery();
             boolean trouve= false;
             while(rs.next()){
@@ -159,9 +197,7 @@ public class GestEmpl {
                 System.out.println(m);
             }
             if(!trouve) System.out.println("aucun message trouvée");
-        } catch (SQLException e) {
-            System.out.println("erreur sql :"+e);
-        }
+
     }
 
     private List<Integer> listeBureau() {
@@ -176,6 +212,26 @@ public class GestEmpl {
                 String tel = rs.getString(3);
                 Bureau b = new Bureau(idBur,sigle,tel);
                 System.out.println("-"+b.getId()+" "+b.getSigle());
+            }
+
+        } catch (SQLException e) {
+            System.out.println("erreur sql :"+e);
+        }
+        return l;
+    }
+    private List<Integer> listeEmploye() {
+        List<Integer> l = new ArrayList<>();
+        String query="select * from APIEMPLOYE";
+        try(Statement stm = dbConnect.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            while(rs.next()){
+                int idEmp = rs.getInt(1);
+                l.add(idEmp);
+                String mail = rs.getString(2);
+                String nom = rs.getString(3);
+                String prenom = rs.getString(4);
+                Employe e = new Employe(idEmp,mail,nom,prenom);
+                System.out.println("-"+e.getId()+" "+e.getNom());
             }
 
         } catch (SQLException e) {
