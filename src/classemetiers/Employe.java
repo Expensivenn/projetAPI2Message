@@ -30,6 +30,7 @@ public class Employe {
     /**
      * liste des messages reçu
      */
+    private int id_bureau;
     private List<Message> messRecu;
     /**
      * liste des messages envoyé
@@ -37,6 +38,13 @@ public class Employe {
     private List<Message> messEnv;
 
 
+    public int getId_bureau() {
+        return id_bureau;
+    }
+
+    public void setId_bureau(int id_bureau) {
+        this.id_bureau = id_bureau;
+    }
 
     /**
      * Constructeur de la classe Employe.
@@ -45,11 +53,12 @@ public class Employe {
      * @param nom le nom de l'employé.
      * @param prenom le prénom de l'employé.
      */
-    public Employe(int id, String mail, String nom, String prenom) {
+    public Employe(int id, String mail, String nom, String prenom,int id_bureau) {
         this.id = id;
         this.mail = mail;
         this.nom = nom;
         this.prenom = prenom;
+        this.id_bureau = id_bureau;
     }
 
     /**

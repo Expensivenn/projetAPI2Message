@@ -1,21 +1,47 @@
-package jdvc;
+package mvp;
 
 import classemetiers.Bureau;
 import classemetiers.Employe;
 import classemetiers.Message;
+import mvp.model.DAOEmploye;
+import mvp.model.EmployeModelDB;
+import mvp.presenter.EmployePresenter;
+import mvp.view.EmployeViewConsole;
+import mvp.view.EmployeViewInterface;
 import myconnections.DBConnection;
 import utilitaires.Utilitaires;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class GestEmpl {
-    private Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+
+        DAOEmploye de = new EmployeModelDB();
+        EmployeViewInterface ev = new EmployeViewConsole();
+        EmployePresenter ep = new EmployePresenter(de,ev);//création et injection de dépendance
+        ep.start();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+
+     private Scanner sc = new Scanner(System.in);
     private Connection dbConnect;
 
     public void gestion() {
@@ -199,8 +225,52 @@ public class GestEmpl {
             if(!trouve) System.out.println("aucun message trouvée");
 
     }
+     public void modifierEmploye() {
+        List<Integer> l = listeEmploye();
+        Integer idEmpTmp;
+        do {
+            System.out.println("Id de l'employé :");
+            idEmpTmp = sc.nextInt();
+            if (!l.contains(idEmpTmp)) {
+            System.out.println("Pas un id existant, recommencez !");
+            }
+        } while (!l.contains(idEmpTmp));
+        sc.skip("\n");
 
-    private List<Integer> listeBureau() {
+        System.out.println("Modification des informations pour l'employé avec l'id : " + idEmpTmp);
+        System.out.print("Nouveau nom : ");
+        String nom = sc.nextLine();
+        System.out.print("Nouveau prénom : ");
+        String prenom = sc.nextLine();
+        System.out.print("Nouveau email : ");
+        String email = sc.nextLine();
+        List<Integer> lBureau = listeBureau();
+        Integer idBurTmp;
+        do {
+            System.out.println("Nouvel id bureau dans lequel il travaille :");
+            idBurTmp = sc.nextInt();
+            if (!lBureau.contains(idBurTmp)) {
+                System.out.println("Pas un id existant, recommencez !");
+            }
+        } while (!lBureau.contains(idBurTmp));
+        sc.skip("\n");
+
+        String query = "UPDATE APIEMPLOYE SET nom=?, prenom=?, email=?, id_bureau=? WHERE id_employe=?";
+        try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+            pstm.setString(1, nom);
+            pstm.setString(2, prenom);
+            pstm.setString(3, email);
+            pstm.setInt(4, idBurTmp);
+            pstm.setInt(5, idEmpTmp);
+            int n = pstm.executeUpdate();
+            System.out.println(n + " ligne(s) mise(s) à jour");
+        } catch (SQLException e) {
+            System.out.println("erreur sql :" + e);
+        }
+     }
+
+
+     private List<Integer> listeBureau() {
         List<Integer> l = new ArrayList<>();
         String query="select * from APIBUREAU";
         try(Statement stm = dbConnect.createStatement()) {
@@ -262,4 +332,5 @@ public class GestEmpl {
         g.gestion();
     }
 
+     */
 }
