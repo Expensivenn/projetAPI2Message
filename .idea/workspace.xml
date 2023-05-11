@@ -5,25 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e83134b-6287-4dfe-8c5c-40efae418642" name="Changes" comment="Gestion employe SQL/JDBC">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_api_2_20_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_core_2_20_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/DAOEmploye.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/DAOMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/EmployeModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/EmployeModelDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/EmployeSpecial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/MessageModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/EmployePresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/EmployeViewConsole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/EmployeViewGraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/EmployeViewInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/builder/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/builder/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/composite/Categorie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/composite/Element.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/composite/Employe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/composite/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/observer/Employe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/observer/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/observer/Subject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/designpatterns/observer/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/model/AbstractModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/model/BureauModelDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/model/BureauSpecial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/model/DAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/model/MessageModelDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/model/MessagesSpecial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/BureauPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/MessagePresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/Presenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/SpecialBureauPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/SpecialEmployePresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/AbstractViewConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/BureauViewConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/BureauViewInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/MessageViewConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/MessageViewInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/SpecialBureauViewConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/SpecialEmployeViewConsole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/ViewInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetAPI2Message.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetAPI2Message.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classemetiers/Employe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classemetiers/Employe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jdvc/GestEmpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/GestEmpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jdvc/ex01.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classemetiers/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classemetiers/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/GestEmpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/GestEmpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/DAOEmploye.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/DAOMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/model/DAOMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/EmployeModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/EmployeModelDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/model/EmployeModelDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/EmployeSpecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/model/EmployeSpecial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/MessageModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/presenter/EmployePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/presenter/EmployePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/EmployeViewConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/EmployeViewConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/EmployeViewInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/EmployeViewInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilitaires/Utilitaires.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilitaires/Utilitaires.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +61,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -60,7 +85,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/PC/Downloads/ojdbc8.jar",
+    "last_opened_file_path": "C:/Users/PC/Documents/Ecole/API2/demoMagasin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,6 +93,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -80,7 +106,12 @@
     ]
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="designpatterns.builder" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.GestEmpl">
     <configuration name="GestEmpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="mvp.GestEmpl" />
       <module name="ProjetAPI2Message" />
@@ -94,9 +125,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="designpatterns.builder.Test" />
+      <module name="ProjetAPI2Message" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="designpatterns.builder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="designpatterns.composite.Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="designpatterns.composite.Test" />
+      <module name="ProjetAPI2Message" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="designpatterns.composite.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="designpatterns.observer.Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="designpatterns.observer.Test" />
+      <module name="ProjetAPI2Message" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="designpatterns.observer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GestEmpl" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.designpatterns.observer.Test" />
+        <item itemvalue="Application.designpatterns.composite.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -120,6 +193,20 @@
       <workItem from="1678872305471" duration="5701000" />
       <workItem from="1679077104742" duration="401000" />
       <workItem from="1679475329545" duration="6099000" />
+      <workItem from="1679488787134" duration="598000" />
+      <workItem from="1680072450705" duration="704000" />
+      <workItem from="1680080420558" duration="5073000" />
+      <workItem from="1680517434140" duration="2788000" />
+      <workItem from="1680520267943" duration="58390000" />
+      <workItem from="1680888277106" duration="3773000" />
+      <workItem from="1681888534573" duration="5348000" />
+      <workItem from="1682500122030" duration="4642000" />
+      <workItem from="1683104994917" duration="3408000" />
+      <workItem from="1683301784421" duration="171000" />
+      <workItem from="1683699879822" duration="28000" />
+      <workItem from="1683704401528" duration="8358000" />
+      <workItem from="1683718577078" duration="27000" />
+      <workItem from="1683799936056" duration="14432000" />
     </task>
     <task id="LOCAL-00001" summary="Classe métiers">
       <created>1675854358322</created>
@@ -172,5 +259,15 @@
     <MESSAGE value="DEbut gestion db" />
     <MESSAGE value="Gestion employe SQL/JDBC" />
     <option name="LAST_COMMIT_MESSAGE" value="Gestion employe SQL/JDBC" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

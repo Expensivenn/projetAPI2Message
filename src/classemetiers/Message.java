@@ -1,6 +1,7 @@
 package classemetiers;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -34,10 +35,29 @@ public class Message {
      * Employe qui envoie ce message
      */
     private Employe emmetteur;
+    public boolean lu;
+    public LocalDate dateRec;
+
+    public LocalDate getDateRec() {
+        return dateRec;
+    }
+
+    public void setDateRec(LocalDate dateRec) {
+        this.dateRec = dateRec;
+    }
+
+    public boolean isLu() {
+        return lu;
+    }
+
+    public void setLu(boolean lu) {
+        this.lu = lu;
+    }
+
     /**
      * Employe qui reçoi ce message
      */
-    private Employe recepteur;
+    private List<Employe> recepteurs;
 
     /**
      * Crée un nouveau message avec l'identifiant, l'objet, le contenu et la date donnés.
@@ -48,6 +68,11 @@ public class Message {
      */
     public Message(int id, String objet, String contenu, LocalDate date) {
         this.id = id;
+        this.objet = objet;
+        this.contenu = contenu;
+        this.date = date;
+    }
+    public Message(String objet, String contenu, LocalDate date) {
         this.objet = objet;
         this.contenu = contenu;
         this.date = date;
@@ -148,16 +173,12 @@ public class Message {
      * Getter pour le recepteur du message.
      * @return le recepteur
      */
-    public Employe getRecepteur() {
-        return recepteur;
+
+    public Employe getRecepteurIndex(int i) {
+        return recepteurs.get(i);
     }
-    /**
-     * Setter pour le recepteur du message.
-     * @param  recepteur le recepteur du message.
-     */
-    public void setRecepteur(Employe recepteur) {
-        this.recepteur = recepteur;
-    }
+
+
 
     /**
      * Egalité de deux messages basée sur l'id Message
@@ -170,6 +191,20 @@ public class Message {
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
         return id == message.id;
+    }
+    /**
+     * Getter pour le recepteur du message.
+     * @return les recepteur
+     */
+    public List<Employe> getRecepteurs() {
+        return recepteurs;
+    }
+    /**
+     * Setter pour le recepteur du message.
+     * @param  recepteurs le recepteur du message.
+     */
+    public void setRecepteurs(List<Employe> recepteurs) {
+        this.recepteurs = recepteurs;
     }
     /**
      * calcul du hashcode basé sur l'id
@@ -193,7 +228,7 @@ public class Message {
                 ", date=" + date +
                 ", message=" + message +
                 ", emmeteur=" + emmetteur +
-                ", recepteur=" + recepteur+
+                ", recepteur(s)=" + recepteurs+
                 '}';
     }
 }

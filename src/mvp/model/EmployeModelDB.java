@@ -2,15 +2,18 @@ package mvp.model;
 
 import classemetiers.Bureau;
 import classemetiers.Employe;
+import classemetiers.Message;
 import myconnections.DBConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeModelDB implements DAOEmploye{
+public class EmployeModelDB implements DAO<Employe>,EmployeSpecial{
     private Connection dbConnect;
     private static final Logger logger = LogManager.getLogger(EmployeModelDB.class);
     public EmployeModelDB(){
@@ -22,9 +25,9 @@ public class EmployeModelDB implements DAOEmploye{
         }
         logger.info("connexion établie");
     }
-
+    //DAO BASIQUE
     @Override
-    public Employe addEmploye(Employe employe) {
+    public Employe add(Employe employe) {
         String query1 = "insert into APIEMPLOYE(email,prenom,nom,id_bureau) values(?,?,?,?)";
         String query2 = "select id_employe from APIEMPLOYE where nom= ? and prenom =? and email =?";
         try (PreparedStatement pstm1 = dbConnect.prepareStatement(query1);
@@ -61,7 +64,7 @@ public class EmployeModelDB implements DAOEmploye{
 
 
     @Override
-    public boolean removeEmploye(Employe employe) {
+    public boolean remove(Employe employe) {
         String query = "delete from APIEMPLOYE where id_employe = ?";
         try(PreparedStatement pstm = dbConnect.prepareStatement(query)) {
             pstm.setInt(1,employe.getId());
@@ -76,7 +79,7 @@ public class EmployeModelDB implements DAOEmploye{
     }
 
     @Override
-    public Employe updateEmploye(Employe employe) {
+    public Employe update(Employe employe) {
         String query = "UPDATE APIEMPLOYE SET nom=?, prenom=?, email=?, id_bureau=? WHERE id_employe=?";
         try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
             pstm.setString(1, employe.getNom());
@@ -94,15 +97,15 @@ public class EmployeModelDB implements DAOEmploye{
     }
 
     @Override
-    public Employe searchEmp(int id) {
+    public Employe read(Employe rech) {
         String query = "SELECT * FROM APIEMPLOYE WHERE id_employe = ?";
         try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
-            pstm.setInt(1, id);
+            pstm.setInt(1, rech.getId());
             int n = pstm.executeUpdate();
             ResultSet rs = pstm.executeQuery();
             rs.next();
             if(n>0){
-                System.out.println(n + " ligne trouvé");
+                //System.out.println(n + " ligne trouvé");
                 Employe e = find(rs);
                 return e;
             }
@@ -116,8 +119,9 @@ public class EmployeModelDB implements DAOEmploye{
 
 
 
+
     @Override
-    public List<Employe> getEmployes() {
+    public List<Employe> getAll() {
         List<Employe> l = new ArrayList<>();
         String query="select * from APIEMPLOYE";
         try(Statement stm = dbConnect.createStatement()) {
@@ -133,36 +137,100 @@ public class EmployeModelDB implements DAOEmploye{
         }
         return l;
     }
+    //EMPLOYE SPECIAL
+    @Override
+    public Employe readID(int id) {
+        String query = "SELECT * FROM APIEMPLOYE WHERE id_employe = ?";
+        try (PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+            pstm.setInt(1, id);
+            int n = pstm.executeUpdate();
+            ResultSet rs = pstm.executeQuery();
+            rs.next();
+            if(n>0){
+                //System.out.println(n + " ligne trouvé");
+                Employe e = find(rs);
+                return e;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("erreur sql :" + e);
+            return null;
+        }
+        return null;
+    }
+
 
     private Employe find(ResultSet rs) throws SQLException {
         int idEmp = rs.getInt(1);
         String mail = rs.getString(2);
-        String nom = rs.getString(3);
-        String prenom = rs.getString(4);
+        String nom = rs.getString(4);
+        String prenom = rs.getString(3);
         int idBur = rs.getInt(5);
         Employe e = new Employe(idEmp,mail,nom,prenom,idBur);
         return e;
     }
 
+
+
     @Override
-    public List<Bureau> getBureau(){
-        List<Bureau> l = new ArrayList<>();
-        String query="select * from APIBUREAU";
-        try(Statement stm = dbConnect.createStatement()) {
-            ResultSet rs = stm.executeQuery(query);
+    public List<Message> messagesRecu(Employe employe) {
+        String query = "SELECT * FROM APIMESSRECUID WHERE id_empl = ?";
+        return rechercheMessages(employe,query);
+    }
+
+    @Override
+    public List<Message> messagesEnvoye(Employe employe) {
+        List<Message> lm = new ArrayList<>();
+        String query = "SELECT * FROM API_EMPLOYES_MESSAGES WHERE id_dest = ?";
+        try(PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+            pstm.setInt(1,employe.getId());
+            ResultSet rs = pstm.executeQuery();
             while(rs.next()){
-                int idBur = rs.getInt(1);
-                String sigle = rs.getString(2);
-                String tel = rs.getString(3);
-                Bureau b = new Bureau(idBur,sigle,tel);
-                l.add(b);
+                int id = rs.getInt(2);
+                String objet = rs.getString(5);
+                String contenu = rs.getString(6);
+                LocalDate dateEnvoi = rs.getDate(7).toLocalDate();
+                char lu = rs.getString(3).charAt(0);
+                Date dateOuv = rs.getDate(4);
+                LocalDate dateOuvert = dateOuv!=null?dateOuv.toLocalDate():null;
+                Message m = new Message(id,objet,contenu,dateEnvoi);
+                if(lu=='Y'){
+                    m.setLu(true);
+                    m.setDateRec(dateOuvert);
+                }
+                lm.add(m);
             }
 
         } catch (SQLException e) {
-            System.err.println("erreur sql :"+e);
+            //System.out.println("erreur sql :"+e);
+            logger.error("erreur sql : "+e);
             return null;
         }
-        return l;
+        return lm;
+    }
+
+
+
+    private  List<Message> rechercheMessages(Employe employe,String query){
+        List<Message>lm = new ArrayList<>();
+        try(PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+            pstm.setInt(1,employe.getId());
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                //int idMes = rs.getInt(1);
+                String object = rs.getString(2);
+                String contenu = rs.getString(3);
+                LocalDate dateEnv = rs.getDate(4).toLocalDate();
+                Message m = new Message(object,contenu,dateEnv);
+                lm.add(m);
+            }
+
+        } catch (SQLException e) {
+            //System.out.println("erreur sql :"+e);
+            logger.error("erreur sql : "+e);
+            return null;
+        }
+        return lm;
     }
 }
 
