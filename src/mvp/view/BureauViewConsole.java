@@ -1,15 +1,9 @@
 package mvp.view;
 
 import classemetiers.Bureau;
-import classemetiers.Employe;
-import classemetiers.Message;
-import mvp.presenter.BureauPresenter;
-import mvp.presenter.EmployePresenter;
-import mvp.presenter.MessagePresenter;
 import mvp.presenter.Presenter;
 import utilitaires.Utilitaires;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 

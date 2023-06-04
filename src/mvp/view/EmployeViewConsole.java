@@ -3,16 +3,14 @@ package mvp.view;
 import classemetiers.Bureau;
 import classemetiers.Employe;
 import classemetiers.Message;
-import mvp.presenter.EmployePresenter;
+
 import mvp.presenter.SpecialEmployePresenter;
 import utilitaires.Utilitaires;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,7 +23,8 @@ public class EmployeViewConsole extends AbstractViewConsole<Employe> implements 
 
     @Override
     protected void rechercher() {
-        ((SpecialEmployePresenter)presenter).searchID(readId());
+
+        affMsg(((SpecialEmployePresenter)presenter).searchID(readId()).toString());
     }
 
     @Override
@@ -83,7 +82,7 @@ public class EmployeViewConsole extends AbstractViewConsole<Employe> implements 
     }
 
     @Override
-    protected void special() { // ENONCE
+    protected void special() { // ENONCE PROF
         System.out.println("Choissisez un employé");
         Employe e = selectionner(ldatas);
         int ch;
@@ -106,10 +105,27 @@ public class EmployeViewConsole extends AbstractViewConsole<Employe> implements 
                     break;
                 case 4:
                     ((SpecialEmployePresenter)presenter).OpSpeMessRep(e);
+                    break;
                 case 5:
                     System.out.println("Retour");
                     return;
 
+            }
+        } while (true);
+    }
+    @Override
+    protected void sgbd(){
+        do {
+            //int ch = Utilitaires.choixListe(Arrays.asList("\n1-Messages recu ","\n2-Messages envoyé","\n3-Menu principal"));
+            System.out.println("\n1-Ajouter employe\n2-Menu principal");
+            String choix = Utilitaires.verifEntreeBoucle("[1-2]", "Choix : ", "Pas entre 1 et 2");
+            int ch = Integer.parseInt(choix);
+            switch (ch) {
+                case 1 -> SgbdAjouterEmploye();
+                case 2 -> {
+                    System.out.println("Retour");
+                    return;
+                }
             }
         } while (true);
     }
@@ -154,9 +170,10 @@ public class EmployeViewConsole extends AbstractViewConsole<Employe> implements 
         List<Employe> le = ((SpecialEmployePresenter)presenter).listeEmp();
         int idEmpTmp;
         int flag;
+        String msg = "Bienvenue dans notre systeme de messagerie"+"\n"+"Qui êtes vous ? (entrez votre id)";
         do {
             flag = 0;
-            String id = Utilitaires.verifEntreeBoucle("[0-9]*","Entrez votre id :","Pas un nombre");
+            String id = Utilitaires.verifEntreeBoucle("[0-9]*",msg,"Pas un nombre");
             idEmpTmp = Integer.parseInt(id);
             for (Employe e:le) {
                 if(e.getId() == idEmpTmp){
@@ -213,19 +230,21 @@ public class EmployeViewConsole extends AbstractViewConsole<Employe> implements 
     public void affMsgEnvList(List<Message> m) {
         int i = 1;
         for (Message mess: m) {
-
-            StringBuilder sb = new StringBuilder();
-            for (Employe e: mess.getRecepteurs()) {
-                sb.append(e.getPrenom()+" ");
-            }
-            System.out.println("-------------------------------------------------------------------");
+            String recep = Utilitaires.getListeRecepeteur(mess);
             if(mess.isLu()){
+                System.out.println("-------------------------------------------------------------------");
                 System.out.printf("(Lu Ouvert le "+mess.getDateRec()+")\n");
-                System.out.println(i+"--> Objet : "+mess.getObjet()+ "          Date Envoi : "+ mess.getDate()+"     Envoyé à "+ sb +"\n"+mess.getContenu());
+                System.out.println("Objet: " + mess.getObjet());
+                System.out.println("Envoyé à: " + recep);
+                System.out.println(mess.getContenu());
             }
             else {
+                System.out.println("-------------------------------------------------------------------");
                 System.out.printf("(Non lu)\n");
-                System.out.println(i+"--> Objet : "+mess.getObjet()+ "          Date Envoi : "+ mess.getDate()+"     Envoyé à "+ sb +"\n"+mess.getContenu());
+                System.out.println("Objet: " + mess.getObjet());
+                System.out.println("Envoyé à: " + recep);
+                System.out.println("Le : "+mess.getDate());
+                System.out.println(mess.getContenu());
             }
             i++;
 
@@ -234,13 +253,20 @@ public class EmployeViewConsole extends AbstractViewConsole<Employe> implements 
     @Override
     public void affMsgList(List<Message> m) {
         for (Message mess: m) {
-            StringBuilder sb = new StringBuilder();
-            for (Employe e: mess.getRecepteurs()) {
-                sb.append(e.getPrenom()+" ");
-            }
+            String recep = Utilitaires.getListeRecepeteur(mess);
             System.out.println("-------------------------------------------------------------------");
-            System.out.println("--> Objet : "+mess.getObjet()+ "          Date : "+ mess.getDate()+"     Envoyé à "+ sb + "Par "+ mess.getEmmetteur().getPrenom()+ "\n"+mess.getContenu()  );
+            System.out.println("Objet: " + mess.getObjet());
+            System.out.println("Date: " + mess.getDate());
+            System.out.println("Envoyé à: " + recep);
+            System.out.println("Par: " + mess.getEmmetteur().getPrenom());
+            System.out.println(mess.getContenu());
+
+
         }
+        /*
+        System.out.println("-------------------------------------------------------------------");
+            System.out.println("--> Objet : "+mess.getObjet()+ "          Date : "+ mess.getDate()+"     Envoyé à "+ sb + "Par "+ mess.getEmmetteur().getPrenom()+ "\n"+mess.getContenu()  );
+         */
     }
     //OPE SPE APPLI
     @Override
@@ -255,6 +281,20 @@ public class EmployeViewConsole extends AbstractViewConsole<Employe> implements 
             affMsg("Liste vide pas de reponse possible !");
         }
 
+    }
+    //SGBD
+    @Override
+    public void SgbdAjouterEmploye(){
+        System.out.print("nom : ");
+        String nom = sc.nextLine();
+        System.out.print("prenom: ");
+        String prenom = sc.nextLine();
+        System.out.print("email: ");
+        String email = sc.nextLine();
+        String id = Utilitaires.verifEntreeBoucle("[0-9]*","Id du bureau dans lequel il travaille : ","Pas un nombre");
+        int idBur = Integer.parseInt(id);
+        Employe emp = new Employe(0,nom,prenom,email,idBur);
+        ((SpecialEmployePresenter)presenter).SgbdAjouterEmploye(emp);
     }
 }
 

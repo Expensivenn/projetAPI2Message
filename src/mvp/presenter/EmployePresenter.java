@@ -5,6 +5,7 @@ import classemetiers.Employe;
 import classemetiers.Message;
 import mvp.model.DAO;
 import mvp.model.EmployeSpecial;
+import mvp.model.MessagesSpecial;
 import mvp.view.SpecialEmployeViewConsole;
 import mvp.view.ViewInterface;
 
@@ -12,8 +13,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class EmployePresenter extends Presenter<Employe> implements SpecialEmployePresenter {
-    private BureauPresenter bureauPresenter;
-    private MessagePresenter messagePresenter;
+    private Presenter<Bureau> bureauPresenter;
+    private Presenter<Message> messagePresenter;
     public EmployePresenter(DAO<Employe> model,ViewInterface<Employe> view){
         super(model,view);
 
@@ -24,8 +25,6 @@ public class EmployePresenter extends Presenter<Employe> implements SpecialEmplo
     public void setMessagePresenter(MessagePresenter messagePresenter) {
         this.messagePresenter = messagePresenter;
     }
-
-
 
 
 
@@ -44,6 +43,7 @@ public class EmployePresenter extends Presenter<Employe> implements SpecialEmplo
             return null;
         }
         else {
+            //view.affMsg(e.toString());
             return e;
         }
     }
@@ -67,13 +67,13 @@ public class EmployePresenter extends Presenter<Employe> implements SpecialEmplo
 
     @Override
     public List<Message> getMessEmp(Employe e) {
-        List<Message>  lm = messagePresenter.messagesDest(e);
+        List<Message>  lm = ((SpecialMessagePresenter)messagePresenter).OpeSpeMessDest(e);
         return lm;
     }
 
     @Override
     public void bonjour(Employe e){
-        Bureau b = bureauPresenter.searchBureauId(e.getId_bureau());
+        Bureau b = ((SpecialBureauPresenter)bureauPresenter).searchBureauId(e.getId_bureau());
         System.out.println("Bienvenue "+e.getPrenom()+ " qui travaille au bureau "+b.getSigle()+ " que souhaitez vous faire ?");
     }
     @Override
@@ -84,10 +84,10 @@ public class EmployePresenter extends Presenter<Employe> implements SpecialEmplo
     //OPE SPECIALES PROF
     @Override
     public void OpSpeMessEnvoyes(Employe employe){
-        List<Message> lm = ((EmployeSpecial)model).messagesEnvoye(employe);
+        List<Message> lm = ((SpecialMessagePresenter)messagePresenter).OpeSpeMessEnv(employe);
         if(lm.size()!=0){
-            List<Message> lmf = messagePresenter.getEmmRec(lm);
-            ((SpecialEmployeViewConsole)view).affMsgEnvList(lmf);
+            //List<Message> lmf = ((SpecialMessagePresenter)messagePresenter).getEmmRec(lm);
+            ((SpecialEmployeViewConsole)view).affMsgEnvList(lm);
         }
         else {
             System.out.println("Pas de messages envoyé !");
@@ -97,52 +97,66 @@ public class EmployePresenter extends Presenter<Employe> implements SpecialEmplo
 
     @Override
     public void OpSpeMessDates(Employe employe,LocalDate d1, LocalDate d2) {
-        List<Message> lm = messagePresenter.messageDates(d1,d2,employe);
+        List<Message> lm = ((SpecialMessagePresenter)messagePresenter).OpeSpeMessDeuxDates(d1,d2,employe);
         if(lm==null || lm.isEmpty()) view.affMsg("aucun message(s) envoyé !");
         else ((SpecialEmployeViewConsole)view).affMsgList(lm);
     }
 
     @Override
     public void OpSpeMessDest(Employe employe) {
-        List<Message> lm = messagePresenter.messagesDest(employe);
+        List<Message> lm = ((SpecialMessagePresenter)messagePresenter).OpeSpeMessDest(employe);
         if(lm==null || lm.isEmpty()) view.affMsg("aucun message(s) reçu !");
         else ((SpecialEmployeViewConsole)view).affMsgList(lm);
     }
 
     @Override
     public void OpSpeMessRep(Employe employe) {
-        List<Message> lm = messagePresenter.messagesRep(employe);
+        List<Message> lm = ((SpecialMessagePresenter)messagePresenter).OpeSpeMessReponses(employe);
         if(lm==null || lm.isEmpty()) view.affMsg("aucune(s) réponse(s) envoyée !");
         else ((SpecialEmployeViewConsole)view).affMsgList(lm);
     }
     //OPE SPECIALES APPLI
     @Override
     public void OpSpeAppliMessNonLu(Employe employe) {
-        List<Message> lm = messagePresenter.messagesNonLuEmpl(employe);
-        List<Message> lmf = messagePresenter.getEmmRec(lm);
-        ((SpecialEmployeViewConsole)view).affMsgList(lmf);
+        List<Message> lm = ((SpecialMessagePresenter)messagePresenter).OpeSpeMessNonLu(employe);
+        //List<Message> lmf = ((SpecialMessagePresenter)messagePresenter).getEmmRec(lm);
+        ((SpecialEmployeViewConsole)view).affMsgList(lm);
     }
 
     @Override
     public void OpSpeAppliToutMessRecu(Employe employe) {
-        List<Message> lm = messagePresenter.messagesDest(employe);
-        List<Message> lmf = messagePresenter.getEmmRec(lm);
-        ((SpecialEmployeViewConsole)view).affMsgList(lmf);
+        List<Message> lm = ((SpecialMessagePresenter)messagePresenter).OpeSpeMessDest(employe);
+        //List<Message> lmf = ((SpecialMessagePresenter)messagePresenter).getEmmRec(lm);
+        ((SpecialEmployeViewConsole)view).affMsgList(lm);
     }
 
     @Override
     public void OpSpeAppliToutMessEnv(Employe employe) {
-        //TODO TOUT LES MESSAGES ENVOYé PAR UN EMPLOYé
+        List<Message> lm = ((SpecialMessagePresenter)messagePresenter).OpeSpeMessEnv(employe);
+        //List<Message> lmf = ((SpecialMessagePresenter)messagePresenter).getEmmRec(lm);
+        ((SpecialEmployeViewConsole)view).affMsgEnvList(lm);
     }
 
     @Override
     public void OpSpeAppliRepondre(Message m, Employe employe) {
-        Message mess = messagePresenter.envoyerReponse(m,employe);
+        ((SpecialMessagePresenter)messagePresenter).OpeSpeAppliEnvoyerRep(m,employe);
     }
 
     @Override
     public void OpSpeAppliEnvoyerMess(Employe employe) {
-        messagePresenter.ennvoyerMessage(employe);
+        ((SpecialMessagePresenter)messagePresenter).ennvoyerMessage(employe);
+    }
+    @Override
+    public void SgbdAjouterEmploye(Employe employe){
+        Employe emp = ((EmployeSpecial)model).SgbdAjouterEmploye(employe);
+        if(emp!= null){
+            view.affMsg("Ajout de "+emp.getPrenom()+"id : "+emp.getId());
+        }
+        else view.affMsg("erreur");
+    }
+    @Override
+    public void affMsgList(List<Message> lm){
+        ((SpecialEmployeViewConsole)view).affMsgList(lm);
     }
 
 }

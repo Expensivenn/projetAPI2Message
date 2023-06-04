@@ -13,4 +13,6 @@ public interface SpecialEmployeViewConsole {
      void affMsgList(List<Message> m);
      void repondre(Employe employe);
      int nombrePersonnes();
+     //SGBD
+     void SgbdAjouterEmploye();
 }

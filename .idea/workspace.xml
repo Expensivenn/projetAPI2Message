@@ -4,50 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e83134b-6287-4dfe-8c5c-40efae418642" name="Changes" comment="Gestion employe SQL/JDBC">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/builder/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/builder/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/composite/Categorie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/composite/Element.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/composite/Employe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/composite/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/observer/Employe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/observer/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/observer/Subject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/designpatterns/observer/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/AbstractModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/BureauModelDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/BureauSpecial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/DAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/MessageModelDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/model/MessagesSpecial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/BureauPresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/MessagePresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/Presenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/SpecialBureauPresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/SpecialEmployePresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/AbstractViewConsole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/BureauViewConsole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/BureauViewInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/MessageViewConsole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/MessageViewInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/SpecialBureauViewConsole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/SpecialEmployeViewConsole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mvp/view/ViewInterface.java" afterDir="false" />
+    <list default="true" id="8e83134b-6287-4dfe-8c5c-40efae418642" name="Changes" comment="Genericité">
+      <change afterPath="$PROJECT_DIR$/src/mvp/presenter/SpecialMessagePresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mvp/view/SpecialMessageViewConsole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classemetiers/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classemetiers/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classemetiers/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/designpatterns/builder/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/designpatterns/builder/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/designpatterns/builder/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/designpatterns/builder/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/designpatterns/observer/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/designpatterns/observer/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mvp/GestEmpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/GestEmpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mvp/model/DAOEmploye.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mvp/model/DAOMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/model/DAOMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mvp/model/EmployeModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/DAOMessage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mvp/model/EmployeModelDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/model/EmployeModelDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mvp/model/EmployeSpecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/model/EmployeSpecial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mvp/model/MessageModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/MessageModelDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/model/MessageModelDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/model/MessagesSpecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/model/MessagesSpecial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/presenter/BureauPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/presenter/BureauPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mvp/presenter/EmployePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/presenter/EmployePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/presenter/MessagePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/presenter/MessagePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/presenter/Presenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/presenter/SpecialEmployePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/presenter/SpecialEmployePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/AbstractViewConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/AbstractViewConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/BureauViewConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/BureauViewConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/BureauViewInterface.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mvp/view/EmployeViewConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/EmployeViewConsole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mvp/view/EmployeViewInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/EmployeViewInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/EmployeViewGraph.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/EmployeViewInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/MessageViewConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/MessageViewConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/MessageViewInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/SpecialEmployeViewConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/SpecialEmployeViewConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvp/view/ViewInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvp/view/ViewInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utilitaires/Utilitaires.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilitaires/Utilitaires.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,8 +47,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -90,10 +76,11 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -167,9 +154,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GestEmpl" />
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.designpatterns.observer.Test" />
         <item itemvalue="Application.designpatterns.composite.Test" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +193,12 @@
       <workItem from="1683699879822" duration="28000" />
       <workItem from="1683704401528" duration="8358000" />
       <workItem from="1683718577078" duration="27000" />
-      <workItem from="1683799936056" duration="14432000" />
+      <workItem from="1683799936056" duration="15094000" />
+      <workItem from="1683889607575" duration="9734000" />
+      <workItem from="1684915626436" duration="3234000" />
+      <workItem from="1684918905643" duration="3501000" />
+      <workItem from="1685632102901" duration="1107000" />
+      <workItem from="1685633240461" duration="19102000" />
     </task>
     <task id="LOCAL-00001" summary="Classe métiers">
       <created>1675854358322</created>
@@ -236,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678788341884</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Genericité">
+      <created>1683834603347</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683834603347</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +257,8 @@
     <MESSAGE value="Classe metier inter" />
     <MESSAGE value="DEbut gestion db" />
     <MESSAGE value="Gestion employe SQL/JDBC" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestion employe SQL/JDBC" />
+    <MESSAGE value="Genericité" />
+    <option name="LAST_COMMIT_MESSAGE" value="Genericité" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -267,6 +267,20 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/mvp/presenter/EmployePresenter.java</url>
+          <line>119</line>
+          <properties class="mvp.presenter.EmployePresenter" method="OpSpeAppliMessNonLu">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/mvp/presenter/MessagePresenter.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

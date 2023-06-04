@@ -3,13 +3,11 @@ package mvp.presenter;
 import mvp.model.DAO;
 import mvp.view.ViewInterface;
 
-import java.util.Comparator;
 
 import java.util.List;
     public abstract class Presenter<T> {
         protected DAO<T> model;
         protected ViewInterface<T> view;
-        //protected Comparator<T> cmp;
         public Presenter(DAO<T> model, ViewInterface<T> view) {
             this.model = model;
             this.view = view;

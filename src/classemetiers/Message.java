@@ -35,6 +35,11 @@ public class Message {
      * Employe qui envoie ce message
      */
     private Employe emmetteur;
+    /**
+     * Employe qui reçoi ce message
+     */
+    private List<Employe> recepteurs;
+
     public boolean lu;
     public LocalDate dateRec;
 
@@ -54,10 +59,6 @@ public class Message {
         this.lu = lu;
     }
 
-    /**
-     * Employe qui reçoi ce message
-     */
-    private List<Employe> recepteurs;
 
     /**
      * Crée un nouveau message avec l'identifiant, l'objet, le contenu et la date donnés.

@@ -25,4 +25,7 @@ public interface SpecialEmployePresenter {
     void OpSpeAppliToutMessEnv(Employe employe);
     void OpSpeAppliRepondre(Message m, Employe employe);
     void OpSpeAppliEnvoyerMess(Employe employe);
+    void SgbdAjouterEmploye(Employe employe);
+
+    void affMsgList(List<Message> lm);
 }

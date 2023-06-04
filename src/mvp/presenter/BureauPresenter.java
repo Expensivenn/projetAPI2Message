@@ -4,10 +4,7 @@ package mvp.presenter;
 import classemetiers.Bureau;
 import mvp.model.BureauSpecial;
 import mvp.model.DAO;
-import mvp.view.BureauViewInterface;
 import mvp.view.ViewInterface;
-
-import java.util.List;
 
 public class BureauPresenter extends Presenter<Bureau> implements SpecialBureauPresenter {
 

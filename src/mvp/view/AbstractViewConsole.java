@@ -20,7 +20,7 @@ public abstract class AbstractViewConsole<T> implements ViewInterface<T> {
     @Override
     public void setListDatas(List<T> ldatas) {
         this.ldatas = ldatas;
-        affListe(ldatas);
+        //affListe(ldatas);
         menu();
     }
 
@@ -35,10 +35,9 @@ public abstract class AbstractViewConsole<T> implements ViewInterface<T> {
     }
 
     public void menu() {
-        List options = new ArrayList<>(Arrays.asList("ajouter", "retirer", "rechercher","modifier","special","fin"));
+        List options = new ArrayList<>(Arrays.asList("ajouter", "retirer", "rechercher","modifier","special","SGBD","fin"));
         do {
             int ch = choixListe(options);
-
             switch (ch) {
                 case 1:
                     ajouter();
@@ -53,10 +52,11 @@ public abstract class AbstractViewConsole<T> implements ViewInterface<T> {
                     modifier();
                     break;
                 case 5:
-                    //affListe(ldatas);
                     special();
                     break;
                 case 6:
+                    sgbd();
+                case 7:
                     return;
             }
         } while (true);
@@ -80,4 +80,7 @@ public abstract class AbstractViewConsole<T> implements ViewInterface<T> {
 
     protected abstract  void ajouter();
     protected abstract void special();
+    protected  void sgbd(){
+        System.out.println("Aucune(s) méthode(s) !");
+    };
 }

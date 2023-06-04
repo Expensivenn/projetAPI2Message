@@ -68,17 +68,16 @@ public class Message {
     }
     @Override
     public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", objet='" + objet + '\'' +
-                ", contenu='" + contenu + '\'' +
-                ", date=" + date +
+        return "Message :" +
+                " id=" + id +'\n' +
+                "objet='" + objet + '\n' +
+                "contenu='" + contenu + '\n' +
+                "date=" + date +
                 ", message=" + message +
-                ", emmetteur=" + emmetteur +
+                ", emetteur=" + emmetteur +
                 ", lu=" + lu +
-                ", dateRec=" + dateRec +
-                ", recepteurs=" + recepteurs +
-                '}';
+                ", dateReception=" + dateRec +
+                ", recepteurs=" + recepteurs;
     }
     public static class MessageBuilder {
         protected int id;

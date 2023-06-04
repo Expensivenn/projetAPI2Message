@@ -177,7 +177,7 @@ public class EmployeModelDB implements DAO<Employe>,EmployeSpecial{
         String query = "SELECT * FROM APIMESSRECUID WHERE id_empl = ?";
         return rechercheMessages(employe,query);
     }
-
+    /*
     @Override
     public List<Message> messagesEnvoye(Employe employe) {
         List<Message> lm = new ArrayList<>();
@@ -208,7 +208,7 @@ public class EmployeModelDB implements DAO<Employe>,EmployeSpecial{
         }
         return lm;
     }
-
+    */
 
 
     private  List<Message> rechercheMessages(Employe employe,String query){
@@ -231,6 +231,26 @@ public class EmployeModelDB implements DAO<Employe>,EmployeSpecial{
             return null;
         }
         return lm;
+    }
+    //SGBD
+    @Override
+    public Employe SgbdAjouterEmploye(Employe employe){
+        String query = "{? = call Sgbd_ajouter_employe(?,?,?,?)}";
+        try(CallableStatement cs = dbConnect.prepareCall(query)){
+            cs.registerOutParameter(1,java.sql.Types.INTEGER);
+            cs.setString(2,employe.getMail());
+            cs.setString(3,employe.getPrenom());
+            cs.setString(4,employe.getNom());
+            cs.setInt(5,employe.getId_bureau());
+            cs.executeUpdate();
+            int id = cs.getInt(1);
+            employe.setId(id);
+        }catch(SQLException e){
+            System.out.println("erreur sql :" + e);
+            logger.error("erreur sql : "+e);
+            return null;
+        }
+        return employe;
     }
 }
 

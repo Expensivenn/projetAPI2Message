@@ -16,6 +16,7 @@ public class Test {
         List<Employe> le = new ArrayList<>();
         le.add(e2);
         le.add(e3);
+        System.out.println("===========-INFO COMPLETE-===========");
         try {
             Message m1 = new Message.MessageBuilder().
                     setId(1).
@@ -29,6 +30,7 @@ public class Test {
         } catch (Exception e) {
             System.out.println("erreur "+e);
         }
+        System.out.println("==========-INFO INCOMPLETE-==========");
         try {
             Message m2 = new Message.MessageBuilder().
                     setId(1).

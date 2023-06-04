@@ -2,7 +2,7 @@ package mvp.view;
 
 import mvp.presenter.Presenter;
 
-import java.util.Comparator;
+
 import java.util.List;
 
 public interface ViewInterface<T> {

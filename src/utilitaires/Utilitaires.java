@@ -1,5 +1,11 @@
 package utilitaires;
 
+import classemetiers.Employe;
+import classemetiers.Message;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -74,5 +80,20 @@ public class Utilitaires {
         LocalDate date = LocalDate.parse(dateString, formatter);
         return date;
     }
+    public static String getListeRecepeteur(Message mess){
+        StringBuilder sb = new StringBuilder();
+        int nRec = mess.getRecepteurs().size();
+        for (int i = 0;i<nRec;i++) {
+            if(i != (nRec-1)){
+                sb.append(mess.getRecepteurs().get(i).getPrenom()+", ");
+            }
+            else{
+                sb.append(mess.getRecepteurs().get(i).getPrenom()+" ");
+            }
+        }
+        return sb.toString();
+    }
+    //Methode Utilitaire interne classe DAO
+
 
 }
